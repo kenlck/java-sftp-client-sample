@@ -1,0 +1,15 @@
+sftp:
+  host: ${SFTP_HOST:localhost}
+  port: ${SFTP_PORT:22}
+  username: ${SFTP_USERNAME:demo}
+  private-key-path: ${SFTP_PRIVATE_KEY_PATH:/path/to/private/key}
+  private-key-passphrase: ${SFTP_PRIVATE_KEY_PASSPHRASE:}
+  host-key-verification: ${SFTP_HOST_KEY_VERIFICATION:STRICT}
+  known-hosts-path: ${SFTP_KNOWN_HOSTS_PATH:${user.home}/.ssh/known_hosts}
+  remote-directory: ${SFTP_REMOTE_DIRECTORY:/upload/demo}
+  create-remote-directory-if-missing: ${SFTP_CREATE_REMOTE_DIRECTORY_IF_MISSING:true}
+  timeout-millis: ${SFTP_TIMEOUT_MILLIS:10000}
+
+spring:
+  main:
+    banner-mode: off
