@@ -11,6 +11,7 @@ import org.apache.sshd.common.util.io.resource.PathResource;
 import org.apache.sshd.common.util.security.SecurityUtils;
 import org.apache.sshd.sftp.client.SftpClient;
 import org.apache.sshd.sftp.client.SftpClientFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -29,6 +30,7 @@ public class SftpUploadService {
     private final SftpProperties properties;
     private final RemotePathResolver remotePathResolver;
 
+    @Autowired
     public SftpUploadService(SftpProperties properties) {
         this(properties, new RemotePathResolver(java.time.Clock.systemUTC()));
     }
