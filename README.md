@@ -72,6 +72,55 @@ Accepts any host key. Only for throwaway testing.
 export SFTP_HOST_KEY_VERIFICATION=INSECURE
 ```
 
+## Key generation
+
+### Recommended: OpenSSH ed25519
+
+```bash
+ssh-keygen -t ed25519 -f ~/.ssh/sftp_ed25519 -C "sftp-poc"
+```
+
+With passphrase:
+
+```bash
+ssh-keygen -t ed25519 -f ~/.ssh/sftp_ed25519 -C "sftp-poc" -N "your-passphrase"
+```
+
+### OpenSSH RSA
+
+```bash
+ssh-keygen -t rsa -b 4096 -f ~/.ssh/sftp_rsa -C "sftp-poc"
+```
+
+With passphrase:
+
+```bash
+ssh-keygen -t rsa -b 4096 -f ~/.ssh/sftp_rsa -C "sftp-poc" -N "your-passphrase"
+```
+
+### PEM / legacy RSA
+
+```bash
+ssh-keygen -t rsa -b 4096 -m PEM -f ~/.ssh/sftp_rsa_pem -C "sftp-poc"
+```
+
+With passphrase:
+
+```bash
+ssh-keygen -t rsa -b 4096 -m PEM -f ~/.ssh/sftp_rsa_pem -C "sftp-poc" -N "your-passphrase"
+```
+
+Each command creates:
+- the private key file, used by this app
+- the matching `.pub` public key, which you provide to the SFTP server
+
+Example:
+
+```bash
+export SFTP_PRIVATE_KEY_PATH="$HOME/.ssh/sftp_ed25519"
+export SFTP_PRIVATE_KEY_PASSPHRASE="your-passphrase"
+```
+
 ## Run
 
 ```bash
